@@ -1,7 +1,5 @@
 provider "aws" {
   region     = "ap-south-1"
-  access_key = "AKIA44HR3L3THPV6L742"
-  secret_key = "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"
 }
 resource "aws_security_group" "ec2-sg" {
   name = "ec2-sg"
@@ -31,11 +29,11 @@ resource "aws_security_group" "ec2-sg" {
   }
 }
 
-resource "aws_instance" "web1" {
+resource "aws_instance" "web2" {
   ami = "ami-04db49c0fb2215364"
   instance_type = "t2.micro"
   security_groups = [aws_security_group.ec2-sg.name]
   tags = {
-    Name = "web1"
+    Name = "web2"
   }
 }
