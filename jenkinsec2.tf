@@ -50,3 +50,6 @@ resource "aws_key_pair" "deployer" {
   key_name   = "aws_key"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7sdlkeQmUlFovLFrPGJuL+DyqcZzlqmtdCFY390lUjTvSqUVqLpgeJ0xFg+d8RD6LU+lPnv1rEBED4ax2FcCgumSmw1LYj+xEOQik+MxeJed1oRX2sHgMRy2IloFnyg+g6oBt8q30AhVy4eN+3qykhDQxYflpi3enVJgu5oD5hBJlfrLtj7Zr6hDlWQnCFkJ6PvwijhVYC6Sr3UIdMP9bA9DLxrkxkUHR/gzbFqdO3iWtDAgODG/gKRB8zhPl093dXGeZx85aG0sjCYt4UUqRdXV6EtDJPMxwN6NPP8uWbbCsz5tH0q1AcJwyVlvr5QfmgrF9Zx2zxC5Ts21lu3CX jenkins@ip-172-31-39-222.ap-south-1.compute.internal"
 }
+output "instance_ips" {
+  value = aws_instance.web2.public_ip
+}
