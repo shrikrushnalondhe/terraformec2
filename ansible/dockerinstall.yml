@@ -1,23 +1,20 @@
 ---
-- name: Docker installation
+- name: Docker Installation
   hosts: demo
   become_user: root
   become_method: sudo
   become: yes
   tasks:
-  - name: Install docker.
-    package:
-      name: docker-ce
-      state: present
-  - name: Start docker service
+  - name: Install docker
+    become_user: root
+    become_method: sudo
+    become: yes
+    yum:
+      name='docker'
+      state=latest
+
+  - name: service docker
     service:
-      name: docker
-      state: started
-  - name: Create a redis container
-    docker_container:
-      name: data1
-      image: centos
-      state: started
-      recreate: yes
-      exposed_ports:
-        - 8080
+      name=docker
+      state=started
+      enabled=yes
