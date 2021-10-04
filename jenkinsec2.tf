@@ -37,7 +37,7 @@ resource "aws_security_group" "ec2docker-sg" {
 }
 
 resource "aws_instance" "dockerec21" {
-  ami = "ami-04db49c0fb2215364"
+  ami = "ami-0c1a7f89451184c8b"
   instance_type = "t2.micro"
   key_name= "aws_key"
   security_groups = [aws_security_group.ec2docker-sg.name]
