@@ -1,2 +1,2 @@
 [demo]
-IPHERE  ansible_user=ec2-user
+IPHERE  ansible_user=ubuntu
