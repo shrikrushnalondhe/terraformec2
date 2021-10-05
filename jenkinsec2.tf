@@ -1,8 +1,8 @@
 provider "aws" {
   region     = "ap-south-1"
 }
-resource "aws_security_group" "ec2docker-sg" {
-  name = "ec2docker-sg"
+resource "aws_security_group" "ec21docker-sg" {
+  name = "ec21docker-sg"
   ingress {
    from_port   = 22
    to_port     = 22
@@ -36,13 +36,13 @@ resource "aws_security_group" "ec2docker-sg" {
   }
 }
 
-resource "aws_instance" "dockerec2" {
+resource "aws_instance" "dockerec21" {
   ami = "ami-0a23ccb2cdd9286bb"
-  instance_type = "t2.micro"
-  key_name= "aws_key"
-  security_groups = [aws_security_group.ec2docker-sg.name]
+  instance_type = "t2.medium"
+  key_name= "aws_key1"
+  security_groups = [aws_security_group.ec21docker-sg.name]
   tags = {
-    Name = "dockerec2"
+    Name = "dockerec21"
   }
   connection {
       type        = "ssh"
@@ -54,9 +54,9 @@ resource "aws_instance" "dockerec2" {
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name   = "aws_key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCl4Kna3RpqRfVZiLXZIYWQYC5k5XLCLKKHWNRsGtA1KbqFT9hJm3BDO85PbJM6XUH1xtL9b+nI8Tsh93hOr40LDS1bEN7gra549/9LKLU3RNHwe3eZaaRUY/pXC47ZomA6Btom8i5avAownAzVDlQTNQykxvLel5iEOaZ4N2tLDWWYoOhcaIokDFZCbCrLQB68xjIzefM5A19homM9PRda50rEa55EpNkjaEY6TIVOiisPfqIc8HOT8fmmV1YVKvGYjqKBfQpxCG2w2UKMTgOuMRVlOkWHtD5GTTVuyz5/i8fOn56OEtQVL4VQntpLXUhtRvKgDNGgQjkxXJb3Bpsr root@ip-172-31-13-174.ap-south-1.compute.internal"
+  key_name   = "aws_key1"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdnfYe7KDxdXvc3FetMhpUhRuv/Ff275RmhDpNSswwyXbrY3fzmv7E+3OGr9eP+T244b1ZOUN9buWnlbnTKGqcZMqIYpJnXbXJ1pHNBDlhrHSRnd2+YoFEwt2F+jIyAPPo0LZ1DwaVavYtbmtOag/EAtXDTlgkq8kWoK1c4Uq3M6OGCVLiPEyKeGq8KTV4VvV/w+nq4o8298wmh5ExAm02IJY3jYLHsmk9dbVu6qsFkJLUFBPHjnHtTWZLJ2z/WN429Zjdy6MQJi9DkyPsID4yKVJWGPXOU8IiIrQDQ62hL8uRx7i7xfYcc1cBOaWkaaQXNWDRGGwEK99Zq0hlWWXT jenkins@ip-172-31-3-249.ap-south-1.compute.internal"
 }
 output "instance_ips" {
-  value = aws_instance.dockerec2.public_ip
+  value = aws_instance.dockerec21.public_ip
 }
